@@ -56,11 +56,6 @@ qemu-system-i386 -cdrom src/kfs.iso
 
 Le rendu exploite le mode texte VGA standard ($80 \times 25$ caractères).
 
-Pour maximiser la qualité du portrait de **Benjamin Netanyahu**, nous utilisons deux astuces majeures :
-
-* **Caractère ASCII `0xDF` (▀)** : Ce caractère permet de colorer le haut (Foreground) et le bas (Background) d'une cellule séparément, doublant ainsi la résolution verticale perçue (passant de 25 à 50 pixels).
-* **Dithering (Tramage)** : Un algorithme de diffusion d'erreur est appliqué lors de la conversion de la photo originale (2024x2947 px) vers les 16 couleurs matérielles du VGA, créant l'illusion de dégradés inexistants.
-
 ## 🧹 Nettoyage
 
 * **Supprimer les fichiers objets** : `make clean`
