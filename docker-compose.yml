@@ -1,0 +1,7 @@
+services:
+  builder:
+    build: ./src
+    volumes:
+      - .:/root/env
+    working_dir: /root/env
+    command: tail -f /dev/null
