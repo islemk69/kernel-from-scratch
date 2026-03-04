@@ -8,10 +8,9 @@ SRC_S   = boot.s
 OBJ     = $(SRC_C:.c=.o) $(SRC_S:.s=.o)
 LINKER  = linker.ld
 
-# --- Flags obligatoires (Source: Sujet III.2.2) ---
-# On ajoute -m32 pour forcer l'architecture i386 demandée 
+# flags obligatoire pour le mendatory
 CFLAGS  = -m32 -ffreestanding -fno-builtin -fno-stack-protector \
-          -nostdlib -nodefaultlibs -Wall -Wextra [cite: 62, 63, 65, 67, 68]
+          -nostdlib -nodefaultlibs -Wall -Wextra
 
 ASFLAGS = -f elf32
 
@@ -21,7 +20,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "Linking kernel..."
-	$(LD) -m elf_i386 -T $(LINKER) -o $(NAME) $(OBJ) [cite: 73, 102]
+	$(LD) -m elf_i386 -T $(LINKER) -o $(NAME) $(OBJ)
 	@echo "Kernel $(NAME) généré."
 
 %.o: %.c
@@ -39,11 +38,10 @@ fclean: clean
 
 re: fclean all
 
-# --- Règle Bonus : Génération de l'ISO (si grub-mkrescue est là) ---
 iso: all
 	@mkdir -p isodir/boot/grub
 	@cp $(NAME) isodir/boot/
-	@echo 'menuentry "kfs" { multiboot /boot/$(NAME) }' > isodir/boot/grub/grub.cfg
+	@echo 'menuentry "kfs" { multiboot /boot/$(NAME) }' > isodir/boot/grub/grub.cfg #nommage kernel grub
 	grub-mkrescue -o kfs.iso isodir
 	@echo "ISO kfs.iso générée."
 
