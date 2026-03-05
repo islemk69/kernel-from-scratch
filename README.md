@@ -1,10 +1,10 @@
-# 🚀 KFS-1 - Kernel From Scratch
+# KFS-1 - Kernel From Scratch
 
 **KFS-1** est la première étape du projet "Kernel From Scratch" de l'école 42. L'objectif est de créer un noyau x86 minimal, bootable via **GRUB**, capable d'initialiser une pile (stack) et d'interagir directement avec le matériel **VGA** pour afficher du contenu à l'écran.
 
 ---
 
-## 🛠️ Fonctionnalités
+## Fonctionnalités
 
 * **Bootloader compatible Multiboot** : Le noyau respecte la norme **Multiboot 1** pour être chargé par GRUB sans encombre.
 * **Initialisation de la Stack** : Mise en place d'une pile de **16 Ko** en assembleur, indispensable pour permettre l'exécution du code C.
@@ -15,7 +15,7 @@
 
 ---
 
-## 📋 Prérequis
+## Prérequis
 
 Avant de commencer, assure-toi d'avoir installé les outils suivants sur ton hôte :
 
@@ -24,7 +24,7 @@ Avant de commencer, assure-toi d'avoir installé les outils suivants sur ton hô
 
 ---
 
-## 🚀 Installation et Lancement
+## Installation et Lancement
 
 ### 1. Préparer l'environnement
 Lance le conteneur de build et compile les sources initiales :
@@ -40,7 +40,7 @@ Bash
 ```bash
 qemu-system-i386 -cdrom src/kfs.iso
 ```
-## 📂 Structure du Projet
+## Structure du Projet
 
 * **`src/`** : Contient le code source du noyau (**ASM**, **C**, **Linker script**).
 * **`Makefile` (racine)** : Gère l'orchestration des commandes via Docker Compose.
@@ -48,7 +48,7 @@ qemu-system-i386 -cdrom src/kfs.iso
 * **`subject.pdf`** : Les spécifications officielles du projet.
 
 
-## 🧹 Nettoyage
+## Nettoyage
 
 * **Supprimer les fichiers objets** : `make clean`
 * **Supprimer les binaires et le conteneur** : `make fclean`
