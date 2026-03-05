@@ -2,15 +2,16 @@ CC      = i686-elf-gcc
 AS      = nasm
 LD      = i686-elf-ld
 
-NAME    = kfs.bin
-SRC_C   = kernel.c
+NAME    = 	kfs.bin
+SRC_C   =	kernel.c lib/string.c drivers/vga.c
 SRC_S   = boot.s
+
 OBJ     = $(SRC_C:.c=.o) $(SRC_S:.s=.o)
 LINKER  = linker.ld
 
 # flags obligatoire pour le mendatory
 CFLAGS  = -m32 -ffreestanding -fno-builtin -fno-stack-protector \
-          -nostdlib -nodefaultlibs -Wall -Wextra -Werror
+          -nostdlib -nodefaultlibs -Wall -Wextra -Werror -Iinclude
 
 ASFLAGS = -f elf32
 
