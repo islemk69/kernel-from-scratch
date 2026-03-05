@@ -10,7 +10,7 @@ LINKER  = linker.ld
 
 # flags obligatoire pour le mendatory
 CFLAGS  = -m32 -ffreestanding -fno-builtin -fno-stack-protector \
-          -nostdlib -nodefaultlibs -Wall -Wextra
+          -nostdlib -nodefaultlibs -Wall -Wextra -Werror
 
 ASFLAGS = -f elf32
 
