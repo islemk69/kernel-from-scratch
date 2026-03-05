@@ -33,18 +33,13 @@ make
 ```
 Cette commande démarre le service builder et exécute le Makefile interne au dossier src.
 
-### 2. Générer l'ISO
-Pour créer l'image disque bootable (.iso) à l'intérieur du conteneur :
-```Bash
-
-docker compose exec builder make -C src iso
-```
-### 3. Lancer le Kernel
+### 2. Lancer le Kernel
 Utilise QEMU pour booter ton noyau et admirer le portrait :
 Bash
 
+```bash
 qemu-system-i386 -cdrom src/kfs.iso
-
+```
 ## 📂 Structure du Projet
 
 * **`src/`** : Contient le code source du noyau (**ASM**, **C**, **Linker script**).
@@ -52,9 +47,6 @@ qemu-system-i386 -cdrom src/kfs.iso
 * **`docker-compose.yml`** : Définit le service de build (`builder`).
 * **`subject.pdf`** : Les spécifications officielles du projet.
 
-## 🎨 Détails Techniques : Le Rendu Portrait
-
-Le rendu exploite le mode texte VGA standard ($80 \times 25$ caractères).
 
 ## 🧹 Nettoyage
 

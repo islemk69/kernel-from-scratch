@@ -16,12 +16,19 @@ ASFLAGS = -f elf32
 
 # --- Règles ---
 
-all: $(NAME)
+all: iso
 
 $(NAME): $(OBJ)
 	@echo "Linking kernel..."
 	$(LD) -m elf_i386 -T $(LINKER) -o $(NAME) $(OBJ)
 	@echo "Kernel $(NAME) généré."
+
+iso: $(NAME)
+	@mkdir -p isodir/boot/grub
+	@cp $(NAME) isodir/boot/
+	@echo 'menuentry "kfs" { multiboot /boot/$(NAME) }' > isodir/boot/grub/grub.cfg #nommage kernel grub
+	grub-mkrescue -o kfs.iso isodir
+	@echo "ISO kfs.iso générée."
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -35,14 +42,10 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f kfs.iso
+	rm -rf isodir
 
 re: fclean all
 
-iso: all
-	@mkdir -p isodir/boot/grub
-	@cp $(NAME) isodir/boot/
-	@echo 'menuentry "kfs" { multiboot /boot/$(NAME) }' > isodir/boot/grub/grub.cfg #nommage kernel grub
-	grub-mkrescue -o kfs.iso isodir
-	@echo "ISO kfs.iso générée."
+
 
 .PHONY: all clean fclean re iso
