@@ -13,8 +13,6 @@ void kmain(void) {
     k_printf("[OK] VGA Interface initialized at %x\n", VGA_ADDRESS);
     k_printf("[OK] Screen resolution: %d x %d\n", VGA_WIDTH, VGA_HEIGHT);
     
-    k_printf("\nFinal Status: Ready to work on project %d\n", 42);
-    
     k_putstr("System Loaded", VGA_COLOR_LIGHT_GREEN, 32, 24);
 
     while (1);
