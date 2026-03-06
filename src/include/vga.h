@@ -6,6 +6,7 @@
 #define VGA_ADDRESS 0xB8000
 
 #include "types.h"
+#include <stdarg.h>
 
 enum vga_color {
     VGA_COLOR_BLACK = 0,
@@ -29,5 +30,6 @@ enum vga_color {
 void k_clear_screen(); // a definir plsu tard
 void k_putchar(int pos, const char c, uint8_t color);
 void k_putstr(const char* str, uint8_t color, int x, int y);
+void k_printf(const char *format, ...);
 
 #endif

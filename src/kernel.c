@@ -5,11 +5,17 @@
 volatile uint16_t* vga_buffer = (uint16_t*)VGA_ADDRESS;
 
 void kmain(void) {
-    for (int i = 0; i < 80 * 25; i++) vga_buffer[i] = 0x0F20;
+    k_clear_screen();
 
-    k_putstr("bonjour", VGA_COLOR_LIGHT_GREEN, 10, 5);
-    k_putstr("Kernel Loaded", VGA_COLOR_LIGHT_GREEN, 32, 10);
-    k_putstr("42", VGA_COLOR_YELLOW, 39, 12);
+    k_printf("KFS-1: Kernel 42 booting...\n");
+    k_printf("---------------------------\n");
+
+    k_printf("[OK] VGA Interface initialized at %x\n", VGA_ADDRESS);
+    k_printf("[OK] Screen resolution: %d x %d\n", VGA_WIDTH, VGA_HEIGHT);
+    
+    k_printf("\nFinal Status: Ready to work on project %d\n", 42);
+    
+    k_putstr("System Loaded", VGA_COLOR_LIGHT_GREEN, 32, 24);
 
     while (1);
 }
