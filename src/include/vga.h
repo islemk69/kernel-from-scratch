@@ -4,6 +4,7 @@
 #define VGA_WIDTH  80
 #define VGA_HEIGHT 25
 #define VGA_ADDRESS 0xB8000
+#define NUM_SCREENS 4
 
 #include "types.h"
 
@@ -31,5 +32,8 @@ void k_putchar(int pos, const char c, uint8_t color);
 void k_putstr(const char* str, uint8_t color, int x, int y);
 void k_putchar_at_cursor(const char c, uint8_t color);
 void update_hardware_cursor(int x, int y);
+
+void vga_init_screens();
+void vga_switch_screen(int screen_id);
 
 #endif
