@@ -15,10 +15,10 @@ stack_bottom:
 stack_top:
 
 section .text
-global _ultrakerneldefoulinustorvaldnaquabiensetenir
+global _start
 extern kmain
 
-_ultrakerneldefoulinustorvaldnaquabiensetenir:
+_start:
     mov esp, stack_top 
     call kmain
     cli          
