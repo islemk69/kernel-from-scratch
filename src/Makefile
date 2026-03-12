@@ -15,6 +15,10 @@ CFLAGS  = -m32 -ffreestanding -fno-builtin -fno-stack-protector \
 
 ASFLAGS = -f elf32
 
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+NC    = \033[0m # No Color (Reset)
+
 # --- Règles ---
 
 all: iso
@@ -29,7 +33,8 @@ iso: $(NAME)
 	@cp $(NAME) isodir/boot/
 	@echo 'menuentry "kfs" { multiboot /boot/$(NAME) }' > isodir/boot/grub/grub.cfg #nommage kernel grub
 	grub-mkrescue -o kfs.iso isodir
-	@echo "ISO kfs.iso générée."
+	@echo "$(GREEN)ISO générée --> ./src/kfs.iso$(NC)"
+	@echo "$(YELLOW)qemu-system-i386 -cdrom src/kfs.iso pour le lancer$(NC)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@

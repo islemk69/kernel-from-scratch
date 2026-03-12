@@ -2,17 +2,15 @@ DOCKER_COMPOSE = docker compose
 SERVICE_NAME   = builder
 
 all:
-	$(DOCKER_COMPOSE) up -d
-	$(DOCKER_COMPOSE) exec $(SERVICE_NAME) make 
+	$(DOCKER_COMPOSE) up
 
 iso: all
 
 clean:
-	$(DOCKER_COMPOSE) exec $(SERVICE_NAME) make clean
+	make -C src clean
 
 fclean:
-	$(DOCKER_COMPOSE) exec $(SERVICE_NAME) make fclean
-	$(DOCKER_COMPOSE) down
+	make -C src fclean
 
 re: fclean all
 

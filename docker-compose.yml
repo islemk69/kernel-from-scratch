@@ -4,4 +4,4 @@ services:
     volumes:
       - ./src:/root/env
     working_dir: /root/env
-    command: tail -f /dev/null
+    command: make
