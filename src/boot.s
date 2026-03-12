@@ -8,6 +8,24 @@ section .multiboot
     dd FLAGS
     dd CHECKSUM
 
+global gdt_flush
+gdt_flush:
+    mov eax, [esp + 4]  ; Récupère le pointeur vers gdt_p
+    lgdt [eax]          ; Charge la GDT 
+    
+    ; On recharge les segments de données (0x10 est l'offset du Kernel Data)
+    mov ax, 0x10      
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+    
+    ; Far jump pour recharger CS (le segment de code à l'offset 0x08)
+    jmp 0x08:.flush_cs
+.flush_cs:
+    ret
+
 section .bss
 align 16
 stack_bottom:

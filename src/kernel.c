@@ -3,6 +3,7 @@
 #include "include/lib.h"
 #include "include/stdio.h"
 #include "include/keyboard.h"
+#include "include/gdt.h"
 
 volatile uint16_t* vga_buffer = (uint16_t*)VGA_ADDRESS;
 
@@ -24,6 +25,7 @@ void k_test_features(void) {
 }
 
 void kmain(void) {
+    init_gdt();
     init_kernel();
     k_test_features();
     
