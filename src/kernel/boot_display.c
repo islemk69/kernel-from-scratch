@@ -37,4 +37,5 @@ void k_test_features(void) {
     fake_loading();
     k_printf(VGA_COLOR_LIGHT_GREEN, "KFS: Kernel initialized successfully!\n");
     k_printf(VGA_COLOR_YELLOW, "Welcome to my OS! (Yeah, i know, we're still in the boot...)\n");
+    k_printf(VGA_COLOR_LIGHT_CYAN, "Type 'help' to see available commands and keyboard shortcuts.\n\n");
 }
