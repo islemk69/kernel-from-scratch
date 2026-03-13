@@ -1,5 +1,5 @@
 #include "vga.h"
-#include "lib.h"
+#include "string.h"
 #include "io.h"
 
 extern volatile uint16_t* vga_buffer;
@@ -67,6 +67,13 @@ void k_putchar_at_cursor(const char c, uint8_t color) {
     if (c == '\n') {
         cursor_x = 0;
         cursor_y++;
+    } else if (c == '\b') {
+        if (cursor_x > 0) {
+            cursor_x--;
+        } else if (cursor_y > 0) {
+            cursor_y--;
+            cursor_x = VGA_WIDTH - 1;
+        }
     } else {
         k_putchar(cursor_y * VGA_WIDTH + cursor_x, c, color);
         cursor_x++;

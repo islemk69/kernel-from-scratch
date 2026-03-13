@@ -1,5 +1,5 @@
-#include "../include/lib.h"
-#include "types.h"
+#include "../include/string.h"
+#include "../include/types.h"
 
 char *k_itoa(int value, char *str, int base) {
     char *rc;

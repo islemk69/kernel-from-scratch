@@ -15,8 +15,8 @@ void gdt_set_gate(int num, uint32_t base, uint32_t limit, uint8_t access, uint8_
 }
 
 void init_gdt() {
-    gdt_p.limit = (sizeof(struct gdt_table) * 7) - 1; // 7 segments (NULL + 6 requis)
-    gdt_p.base  = 0x00000800; //[cite: 126];
+    gdt_p.limit = (sizeof(struct gdt_table) * 7) - 1;
+    gdt_p.base  = 0x00000800;
 
     gdt_set_gate(0, 0, 0, 0, 0);                // Null segment 
     gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF); // Kernel Code 
@@ -26,6 +26,6 @@ void init_gdt() {
     gdt_set_gate(5, 0, 0xFFFFFFFF, 0xF2, 0xCF); // User Data 
     gdt_set_gate(6, 0, 0xFFFFFFFF, 0xF2, 0xCF); // User Stack 
 
-    // On appelle la fonction assembleur pour charger la GDT
+    // Appel assembleur
     gdt_flush((uint32_t)&gdt_p);
 }
