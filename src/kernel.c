@@ -11,6 +11,7 @@ void init_kernel(void) {
 }
 
 void k_test_features(void) {
+    k_printf("42\n");
     k_printf("KFS-1: Kernel initialized successfully!\n");
     k_printf("You are currently on Screen 0 !!\n\n");
     
