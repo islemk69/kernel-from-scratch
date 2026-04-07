@@ -1,4 +1,4 @@
-ENTRY(_ultrakerneldefoulinustorvaldnaquabiensetenir)
+ENTRY(_start)
 
 SECTIONS
 {

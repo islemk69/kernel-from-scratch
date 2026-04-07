@@ -3,7 +3,9 @@ AS      = nasm
 LD      = i686-elf-ld
 
 NAME    = 	kfs.bin
-SRC_C   =	kernel.c lib/string.c lib/stdio.c drivers/vga.c drivers/keyboard.c drivers/io.c
+SRC_C   =	kernel.c lib/string.c lib/stdio.c \
+		drivers/vga.c drivers/keyboard.c drivers/io.c drivers/gdt.c \
+		kernel/shell.c kernel/stack.c kernel/boot_display.c
 SRC_S   = boot.s
 
 OBJ     = $(SRC_C:.c=.o) $(SRC_S:.s=.o)
